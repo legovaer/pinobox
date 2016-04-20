@@ -5,9 +5,9 @@ block="
     ServerAdmin jme@emakina.com
 
     ServerName $1
-    DocumentRoot /home/pinobox/www/$2/web
+    DocumentRoot /home/pinobox/www/$2/www
 
-    DirectoryIndex app.php
+    DirectoryIndex index.php
 
     EnableSendfile Off
 

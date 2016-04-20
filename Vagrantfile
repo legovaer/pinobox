@@ -4,6 +4,11 @@
 
 Vagrant.configure(2) do |config|
 
+    # This config is what you should change!
+    config.vm.synced_folder "../GitHub", "/home/pinobox/www", type: "nfs"
+
+
+    # Trespassing is a crime!
     scriptDir = File.dirname(__FILE__)
 
     config.vm.box = "pinoniq/pinobox"
@@ -17,9 +22,7 @@ Vagrant.configure(2) do |config|
     config.vm.network "forwarded_port", guest: 5432, host: 54320
 
     # Create a private network.
-    config.vm.network "private_network", ip: "192.168.10.10", auto_config: false
-
-    config.vm.synced_folder "../GitHub", "/home/pinobox/www"
+    config.vm.network "private_network", ip: "192.168.10.10", auto_config: true
 
     config.vm.provider "virtualbox" do |vb|
         vb.memory = "1024"
@@ -36,7 +39,7 @@ Vagrant.configure(2) do |config|
     config.ssh.username = "pinobox"
 
     config.vm.provision "shell" do |s|
-        s.path = scriptDir + "/symfony.sh"
-        s.args = ["hostname"]
+        s.path = scriptDir + "/pinobox/symfony.sh"
+        s.args = ["tritonleuven.dev", "tritonleuven.be"]
     end
 end
