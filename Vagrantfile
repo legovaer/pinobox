@@ -1,11 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+path = "#{File.dirname(__FILE__)}"
+require 'yaml'
+
+settings = YAML::load(File.read(path + '/settings.yaml'))
 
 Vagrant.configure(2) do |config|
 
     # This config is what you should change!
-    config.vm.synced_folder "../GitHub", "/home/pinobox/www", type: "nfs"
+    config.vm.synced_folder "../development", "/home/pinobox/www", type: "nfs"
 
 
     # Trespassing is a crime!
@@ -38,8 +42,29 @@ Vagrant.configure(2) do |config|
     config.ssh.insert_key = false
     config.ssh.username = "pinobox"
 
+    #Clean up all currently enabled sites
     config.vm.provision "shell" do |s|
-        s.path = scriptDir + "/pinobox/symfony.sh"
-        s.args = ["tritonleuven.dev", "tritonleuven.be"]
+        s.path = scriptDir + "/pinobox/clean-up.sh"
+    end
+
+    # Install All The Configured Nginx Sites
+    settings["sites"].each do |site|
+      config.vm.provision "shell" do |s|
+          if (site.has_key?("symfony") && site["symfony"])
+            s.path = scriptDir + "/pinobox/symfony.sh"
+            s.args = [site["map"], site["to"]]
+          elsif (site.has_key?("drupal") && site["drupal"])
+            s.path = scriptDir + "/pinobox/drupal.sh"
+            s.args = [site["map"], site["to"]]
+          else
+            s.path = scriptDir + "/pinobox/custom.sh"
+            s.args = [site["map"], site["to"]]
+          end
+      end
+    end
+
+    #restart the webserver and php5-fpm
+    config.vm.provision "shell" do |s|
+        s.path = scriptDir + "/pinobox/restart-webserver.sh"
     end
 end

@@ -27,5 +27,3 @@ block="
 
 echo "$block" > "/etc/apache2/sites-available/$1.conf"
 sudo a2ensite "$1"
-sudo service apache2 reload
-sudo service php5-fpm restart

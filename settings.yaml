@@ -1,0 +1,4 @@
+sites:
+    - map: my.hostname.tld
+      to: my/local/folder
+      symfony: true
