@@ -2,8 +2,6 @@
 
 A simple debian based vagrant environment.
 
-# How to use
-
 ## First use
 1) download this repository
 
@@ -49,3 +47,22 @@ symfony:
       to: path/to/hostname/files
       symfony: true
 ```
+
+### SSH connection
+The box supports ssh access:
+
+``` vagrant ssh ```
+
+host: 192.168.10.10
+user: pinobox
+password: secret
+
+!this user has NOPASSWD sudo rights
+
+
+### MariaDB connection info
+username: root
+password: secret
+
+### Acessing your sites
+To access a site, you need to edit your host file and point the ```hostname.tld``` to the address ```192.168.10.10```
