@@ -48,6 +48,15 @@ symfony:
       symfony: true
 ```
 
+symfony:
+```
+    - map: hostname.tld
+      to: path/to/hostname/files
+      node: true
+      port: 3000
+```
+This will proxy all requests to hostname.tld:80 to localhost:3000
+
 ### SSH connection
 The box supports ssh access:
 
