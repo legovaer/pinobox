@@ -7,6 +7,8 @@ block="
     ServerName $1
     DocumentRoot /home/pinobox/www/$2/www
 
+    ErrorLog /home/vagrant/www/$2/error.log
+
     DirectoryIndex index.php
 
     EnableSendfile Off
