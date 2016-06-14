@@ -5,7 +5,7 @@ block="
     ServerAdmin jme@emakina.com
 
     ServerName $1
-    DocumentRoot /home/pinobox/www/$2/web
+    DocumentRoot /home/pinobox/www/$2/www/web
 
     ErrorLog /home/vagrant/www/$2/error.log
 
