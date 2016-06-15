@@ -8,8 +8,6 @@ block="
     ServerAlias *.$1
     DocumentRoot /home/pinobox/www/$2/www
 
-    ErrorLog /home/pinobox/www/$2/error.log
-
     DirectoryIndex index.php
 
     EnableSendfile Off

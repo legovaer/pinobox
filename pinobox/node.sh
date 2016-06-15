@@ -8,8 +8,6 @@ block="
     ServerAlias *.$1
     DocumentRoot /home/pinobox/www/$2/www
 
-    ErrorLog /home/pinobox/www/$2/error.log
-
     EnableSendfile Off
 
     <Directory /home/pinobox/www/$2>
