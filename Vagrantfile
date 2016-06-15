@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
           elsif (site.has_key?("drupal") && site["drupal"])
             s.path = scriptDir + "/pinobox/drupal.sh"
             s.args = [site["map"], site["to"]]
-          elsif (site.has_key?("node") && site["node"] && site.has_key?("port")
+          elsif (site.has_key?("node") && site["node"] && site.has_key?("port"))
             s.path = scriptDir + "/pinobox/node.sh"
             s.args = [site["map"], site["to"], site["port"]]
           else

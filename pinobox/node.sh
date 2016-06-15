@@ -5,11 +5,10 @@ block="
     ServerAdmin jme@emakina.com
 
     ServerName $1
+    ServerAlias *.$1
     DocumentRoot /home/pinobox/www/$2/www
 
-    ErrorLog /home/vagrant/www/$2/error.log
-
-    DirectoryIndex index.php
+    ErrorLog /home/pinobox/www/$2/error.log
 
     EnableSendfile Off
 
