@@ -48,7 +48,14 @@ symfony:
       symfony: true
 ```
 
-symfony:
+laravel:
+```
+    - map: hostname.tld
+      to: path/to/hostname/files
+      laravel: true
+```
+
+node:
 ```
     - map: hostname.tld
       to: path/to/hostname/files
@@ -75,3 +82,18 @@ password: secret
 
 ### Acessing your sites
 To access a site, you need to edit your host file and point the ```hostname.tld``` to the address ```192.168.10.10```
+
+## Pro tips
+### Alias
+
+Create the following alias (fix path into it) to be able to execute pinobox commands from any location
+  
+  ``` alias pino="cd ~/path/to/pinobox && vagrant $*" ```
+  
+Use it like:
+  ``` 
+   $ pino up
+   $ pino halt
+   $ pino ssh
+   $ pino reload --provision
+  ```
