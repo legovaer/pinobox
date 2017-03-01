@@ -53,6 +53,9 @@ Vagrant.configure(2) do |config|
           if (site.has_key?("symfony") && site["symfony"])
             s.path = scriptDir + "/pinobox/symfony.sh"
             s.args = [site["map"], site["to"]]
+          elsif (site.has_key?("laravel") && site["laravel"])
+            s.path = scriptDir + "/pinobox/laravel.sh"
+            s.args = [site["map"], site["to"]]
           elsif (site.has_key?("drupal") && site["drupal"])
             s.path = scriptDir + "/pinobox/drupal.sh"
             s.args = [site["map"], site["to"]]
