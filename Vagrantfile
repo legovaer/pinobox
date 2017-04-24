@@ -9,7 +9,7 @@ settings = YAML::load(File.read(path + '/settings.yaml'))
 Vagrant.configure(2) do |config|
 
     # This config is what you should change!
-    config.vm.synced_folder "PATH_TO_WEBSITES_ON_HOST_MACHINE", "/home/pinobox/www", type: "nfs"
+    config.vm.synced_folder "../www", "/home/pinobox/www", type: "nfs"
 
 
     # Trespassing is a crime!
@@ -53,8 +53,14 @@ Vagrant.configure(2) do |config|
           if (site.has_key?("symfony") && site["symfony"])
             s.path = scriptDir + "/pinobox/symfony.sh"
             s.args = [site["map"], site["to"]]
+          elsif (site.has_key?("laravel") && site["laravel"])
+            s.path = scriptDir + "/pinobox/laravel.sh"
+            s.args = [site["map"], site["to"]]
           elsif (site.has_key?("drupal") && site["drupal"])
             s.path = scriptDir + "/pinobox/drupal.sh"
+            s.args = [site["map"], site["to"]]
+          elsif (site.has_key?("drupal8") && site["drupal8"])
+            s.path = scriptDir + "/pinobox/drupal8.sh"
             s.args = [site["map"], site["to"]]
           elsif (site.has_key?("node") && site["node"] && site.has_key?("port"))
             s.path = scriptDir + "/pinobox/node.sh"
