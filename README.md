@@ -26,6 +26,8 @@ Note that this folder should be outside of the pinobox directory.
 
 ### Adding a site
 
+Your site should be located at the root of the path you have defined above. Inside the site directory, Pinobox expects to find a www/ directory, where all the site files should be located.
+
 Edit settings.yaml to add your site:
 ```
     - map: hostname.tld
